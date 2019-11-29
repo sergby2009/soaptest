@@ -38,7 +38,7 @@
             </xsd:complexType>
 
             <xsd:element name="SendRequest">
-                <xsd:complexType mixed="true">
+                <xsd:complexType>
                     <xsd:sequence>
                         <xsd:element name="userList" type="ns:UserList" />
                      </xsd:sequence>
@@ -73,14 +73,14 @@
 
     <!-- Сообщения процедуры sendUser -->
     <message name="sendUserRequest">
-        <part name="SendRequest" element="ns:SendRequest" />
+        <part name="sendRequest" element="ns:SendRequest" />
     </message>
     <message name="sendUserResponse">
-        <part name="SendResponse" element="ns:SendResponse" />
+        <part name="sendResponse" element="ns:SendResponse" />
     </message>
     <!-- Сообщения процедуры getUser -->
     <message name="getUserRequest">
-        <part name="getRequest" element="ns:getRequest" />
+        <part name="GetRequest" element="ns:GetRequest" />
     </message>
     <message name="getUserResponse">
         <part name="getResponse" element="ns:getResponse" />

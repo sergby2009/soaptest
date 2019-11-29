@@ -40,12 +40,12 @@ $req->SendRequest->userList->tel = "000-000-00-00";
 //$srv->sendUser($req);
 
 try {
-//      $client = new SoapClient("http://php2.local/user.wsdl",array( 'soap_version' => SOAP_1_2));
-        $options = [
-            'soap_version' => SOAP_1_2,
-            'classmap' => ['']
-        ];
+        $options = ['soap_version' => SOAP_1_2,
+                    "trace"        => 1,
+                    'classmap'     => ['']];
         $client = new SoapClient("http://php2.local/user.wsdl", $options);
+        $client->__setCookie('XDEBUG_SESSION', 'PHPSTORM');
+        var_dump($client->__getFunctions());
         var_dump($client->sendUser($req));
     } catch (SoapFault $exception) {
         echo $exception->getMessage();

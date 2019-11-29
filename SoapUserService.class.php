@@ -35,36 +35,36 @@ class SoapUserService
             "pasport"=> "8735-987654"),
     );
 
-    public function sendUser($data){
-        if (!is_null($data)){
-            foreach ($data->SendRequest->userList as $newUser) {
-                foreach ($this->userArray as $user) {
-                    if ($newUser['firstname'] == $user['firstname'] &&
-                        $newUser['lastname'] == $user['lastname'] &&
-                        $newUser['bday'] == $user['bday'] &&
-                        $newUser['tel'] == $user['tel'] &&
-                        $newUser['phone'] == $user['phone']){
-                        return false;
-                    }//if
-                }//foreach
-            }//foreach
-            foreach ($data->SendRequest->userList as $newUser) {
-                $this->userArray[] = $newUser;
-            }//foreach
-
-//           Вывод содержимого $this->userArray
-//           foreach ($this->userArray as $user) {
-//               echo "<br>";
-//               foreach ($user as $key => $item ) {
-//                   echo "{$key} = {$item}";
-//                   echo "<br>";
-//               }//foreach
-//           }//foreach
-            return true;
-        }else{
-            return false;
-        }//if
-    }//sendUser
+//    public function sendUser(sendRequest $sendRequest){
+//        if (!is_null($sendReuqest)){
+//            foreach ($sendRequest->SendRequest->userList as $newUser) {
+//                foreach ($this->userArray as $user) {
+//                    if ($newUser['firstname'] == $user['firstname'] &&
+//                        $newUser['lastname'] == $user['lastname'] &&
+//                        $newUser['bday'] == $user['bday'] &&
+//                        $newUser['tel'] == $user['tel'] &&
+//                        $newUser['phone'] == $user['phone']){
+//                        return false;
+//                    }//if
+//                }//foreach
+//            }//foreach
+//            foreach ($sendRequest->SendRequest->userList as $newUser) {
+//                $this->userArray[] = $newUser;
+//            }//foreach
+//
+////           Вывод содержимого $this->userArray
+////           foreach ($this->userArray as $user) {
+////               echo "<br>";
+////               foreach ($user as $key => $item ) {
+////                   echo "{$key} = {$item}";
+////                   echo "<br>";
+////               }//foreach
+////           }//foreach
+//            return true;
+//        }else{
+//            return false;
+//        }//if
+//    }//sendUser
 
 }//class
 
