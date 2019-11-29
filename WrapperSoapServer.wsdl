@@ -1,0 +1,615 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="WrapperSoapServer"
+             targetNamespace="http://foo.bar/wrappersoapserver"
+             xmlns:tns="http://foo.bar/wrappersoapserver"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:ns="http://foo.bar/wrappersoapserver/types">
+  <types>
+    <xsd:schema targetNamespace="http://foo.bar/wrappersoapserver/types"
+                xmlns="http://foo.bar/wrappersoapserver/types">
+
+      <xsd:complexType name="ArrayOfResults">
+        <xsd:complexContent>
+          <xsd:restriction base="soapenc:Array">
+            <xsd:attribute ref="soapenc:arrayType" soap:arrayType="xsd:array[]"/>
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+
+      <xsd:complexType name="MagicSearch">
+        <xsd:sequence>
+          <xsd:element name="foundCount" type="xsd:int"/>
+          <xsd:element name="results" type="ns:ArrayOfResults"/>
+        </xsd:sequence>
+      </xsd:complexType>
+
+      <xsd:element name="MagicSearch" nillable="true" type="ns:MagicSearch"/>
+
+      <xsd:complexType name="ArrayOfCompany_users">
+        <xsd:complexContent>
+          <xsd:restriction base="soapenc:Array">
+            <xsd:attribute ref="soapenc:arrayType" soap:arrayType="xsd:array[]"/>
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+
+      <xsd:complexType name="ArrayOfUsers">
+        <xsd:complexContent>
+          <xsd:restriction base="soapenc:Array">
+            <xsd:attribute ref="soapenc:arrayType" soap:arrayType="xsd:array[]"/>
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+
+      <xsd:complexType name="CompanyReturn">
+        <xsd:sequence>
+          <xsd:element name="id_company" type="xsd:int"/>
+          <xsd:element name="message" type="xsd:string"/>
+          <xsd:element name="name" type="xsd:string"/>
+          <xsd:element name="type" type="xsd:string"/>
+          <xsd:element name="inn" type="xsd:string"/>
+          <xsd:element name="ogrn" type="xsd:string"/>
+          <xsd:element name="kpp" type="xsd:string"/>
+          <xsd:element name="phone" type="xsd:string"/>
+          <xsd:element name="adress" type="xsd:string"/>
+          <xsd:element name="users" type="ns:ArrayOfUsers"/>
+        </xsd:sequence>
+      </xsd:complexType>
+
+      <xsd:element name="CompanyReturn" nillable="true" type="ns:CompanyReturn"/>
+
+      <xsd:complexType name="ArrayOfTasks">
+        <xsd:complexContent>
+          <xsd:restriction base="soapenc:Array">
+            <xsd:attribute ref="soapenc:arrayType" soap:arrayType="xsd:array[]"/>
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+
+      <xsd:complexType name="ArrayOfCompanies">
+        <xsd:complexContent>
+          <xsd:restriction base="soapenc:Array">
+            <xsd:attribute ref="soapenc:arrayType" soap:arrayType="xsd:array[]"/>
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+
+      <xsd:complexType name="UserReturnTask">
+        <xsd:sequence>
+          <xsd:element name="email" type="xsd:string"/>
+          <xsd:element name="name" type="xsd:string"/>
+          <xsd:element name="avatar" type="xsd:string"/>
+          <xsd:element name="password" type="xsd:string"/>
+          <xsd:element name="birthday" type="xsd:string"/>
+          <xsd:element name="gender" type="xsd:string"/>
+          <xsd:element name="date_start" type="xsd:string"/>
+          <xsd:element name="hobby" type="xsd:string"/>
+          <xsd:element name="name1" type="xsd:string"/>
+          <xsd:element name="surname1" type="xsd:string"/>
+          <xsd:element name="fathername1" type="xsd:string"/>
+          <xsd:element name="cat" type="xsd:string"/>
+          <xsd:element name="dog" type="xsd:string"/>
+          <xsd:element name="parrot" type="xsd:string"/>
+          <xsd:element name="cavy" type="xsd:string"/>
+          <xsd:element name="hamster" type="xsd:string"/>
+          <xsd:element name="squirrel" type="xsd:string"/>
+          <xsd:element name="phone" type="xsd:string"/>
+          <xsd:element name="adres" type="xsd:string"/>
+          <xsd:element name="tasks" type="ns:ArrayOfTasks"/>
+          <xsd:element name="companies" type="ns:ArrayOfCompanies"/>
+        </xsd:sequence>
+      </xsd:complexType>
+
+      <xsd:element name="UserReturnTask" nillable="true" type="ns:UserReturnTask"/>
+
+      <xsd:complexType name="TaskReturn">
+        <xsd:sequence>
+          <xsd:element name="id_task" type="xsd:int"/>
+          <xsd:element name="message" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+
+      <xsd:element name="TaskReturn" nillable="true" type="ns:TaskReturn"/>
+
+      <xsd:complexType name="UserReturn">
+        <xsd:sequence>
+          <xsd:element name="email" type="xsd:string"/>
+          <xsd:element name="name" type="xsd:string"/>
+          <xsd:element name="avatar" type="xsd:string"/>
+          <xsd:element name="password" type="xsd:string"/>
+          <xsd:element name="birthday" type="xsd:string"/>
+          <xsd:element name="gender" type="xsd:string"/>
+          <xsd:element name="date_start" type="xsd:string"/>
+          <xsd:element name="hobby" type="xsd:string"/>
+          <xsd:element name="name1" type="xsd:string"/>
+          <xsd:element name="surname1" type="xsd:string"/>
+          <xsd:element name="fathername1" type="xsd:string"/>
+          <xsd:element name="cat" type="xsd:string"/>
+          <xsd:element name="dog" type="xsd:string"/>
+          <xsd:element name="parrot" type="xsd:string"/>
+          <xsd:element name="cavy" type="xsd:string"/>
+          <xsd:element name="hamster" type="xsd:string"/>
+          <xsd:element name="squirrel" type="xsd:string"/>
+          <xsd:element name="phone" type="xsd:string"/>
+          <xsd:element name="adres" type="xsd:string"/>
+          <xsd:element name="inn" type="xsd:int"/>
+        </xsd:sequence>
+      </xsd:complexType>
+
+      <xsd:element name="UserReturn" nillable="true" type="ns:UserReturn"/>
+
+      <xsd:complexType name="ArrayOfCompanys">
+        <xsd:complexContent>
+          <xsd:restriction base="soapenc:Array">
+            <xsd:attribute ref="soapenc:arrayType" soap:arrayType="xsd:array[]"/>
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+
+      <xsd:complexType name="UserReturnFull">
+        <xsd:sequence>
+          <xsd:element name="email" type="xsd:string"/>
+          <xsd:element name="name" type="xsd:string"/>
+          <xsd:element name="avatar" type="xsd:string"/>
+          <xsd:element name="password" type="xsd:string"/>
+          <xsd:element name="birthday" type="xsd:string"/>
+          <xsd:element name="gender" type="xsd:string"/>
+          <xsd:element name="date_start" type="xsd:string"/>
+          <xsd:element name="hobby" type="xsd:string"/>
+          <xsd:element name="name1" type="xsd:string"/>
+          <xsd:element name="surname1" type="xsd:string"/>
+          <xsd:element name="fathername1" type="xsd:string"/>
+          <xsd:element name="cat" type="xsd:string"/>
+          <xsd:element name="dog" type="xsd:string"/>
+          <xsd:element name="parrot" type="xsd:string"/>
+          <xsd:element name="cavy" type="xsd:string"/>
+          <xsd:element name="hamster" type="xsd:string"/>
+          <xsd:element name="squirrel" type="xsd:string"/>
+          <xsd:element name="phone" type="xsd:string"/>
+          <xsd:element name="adres" type="xsd:string"/>
+          <xsd:element name="tasks" type="ns:ArrayOfTasks"/>
+          <xsd:element name="companys" type="ns:ArrayOfCompanys"/>
+        </xsd:sequence>
+      </xsd:complexType>
+
+      <xsd:element name="UserReturnFull" nillable="true" type="ns:UserReturnFull"/>
+
+    </xsd:schema>
+  </types>
+
+  <message name="DeleteTaskRequest">
+    <part name="email_owner" type="xsd:string"/>
+    <part name="id_task" type="xsd:int"/>
+  </message>
+
+  <message name="DeleteTaskResponse">
+    <part name="result" type="xsd:string"/>
+  </message>
+
+  <message name="MagicSearchRequest">
+    <part name="query" type="xsd:string"/>
+    <part name="partyType" type="xsd:string"/>
+    <part name="fullSimilarity" type="xsd:bool"/>
+    <part name="taskStatus" type="xsd:string"/>
+    <part name="include" type="xsd:mixed"/>
+    <part name="maxCount" type="xsd:int"/>
+  </message>
+
+  <message name="MagicSearchResponse">
+    <part name="MagicSearch" element="ns:MagicSearch"/>
+  </message>
+
+  <message name="AddTaskInCronRequest">
+    <part name="email_owner" type="xsd:string"/>
+    <part name="id_task" type="xsd:int"/>
+    <part name="hours" type="xsd:string"/>
+    <part name="minutes" type="xsd:string"/>
+    <part name="month" type="xsd:string"/>
+    <part name="days" type="xsd:string"/>
+    <part name="day_weeks" type="xsd:string"/>
+  </message>
+
+  <message name="AddTaskInCronResponse">
+    <part name="result" type="xsd:string"/>
+  </message>
+
+  <message name="UpdateTaskRequest">
+    <part name="email_owner" type="xsd:string"/>
+    <part name="email_assign" type="xsd:string"/>
+    <part name="id_task" type="xsd:int"/>
+    <part name="task_title" type="xsd:string"/>
+    <part name="task_description" type="xsd:string"/>
+  </message>
+
+  <message name="UpdateTaskResponse">
+    <part name="result" type="xsd:string"/>
+  </message>
+
+  <message name="CreateCompanyRequest">
+    <part name="company_name" type="xsd:string"/>
+    <part name="company_type" type="xsd:string"/>
+    <part name="company_users" type="ns:ArrayOfCompany_users"/>
+    <part name="email_owner" type="xsd:string"/>
+  </message>
+
+  <message name="CreateCompanyResponse">
+    <part name="CompanyReturn" element="ns:CompanyReturn"/>
+  </message>
+
+  <message name="CreateUserRequest">
+    <part name="email" type="xsd:string"/>
+    <part name="name" type="xsd:string"/>
+    <part name="tasks" type="ns:ArrayOfTasks"/>
+    <part name="companies" type="ns:ArrayOfCompanies"/>
+    <part name="hobby" type="xsd:string"/>
+    <part name="adres" type="xsd:string"/>
+    <part name="name1" type="xsd:string"/>
+    <part name="surname1" type="xsd:string"/>
+    <part name="fathername1" type="xsd:string"/>
+    <part name="cat" type="xsd:string"/>
+    <part name="dog" type="xsd:string"/>
+    <part name="parrot" type="xsd:string"/>
+    <part name="cavy" type="xsd:string"/>
+    <part name="hamster" type="xsd:string"/>
+    <part name="squirrel" type="xsd:string"/>
+    <part name="phone" type="xsd:string"/>
+    <part name="inn" type="xsd:string"/>
+    <part name="gender" type="xsd:string"/>
+    <part name="birthday" type="xsd:string"/>
+    <part name="date_start" type="xsd:string"/>
+  </message>
+
+  <message name="CreateUserResponse">
+    <part name="UserReturnTask" element="ns:UserReturnTask"/>
+  </message>
+
+  <message name="CreateUserWithTasksRequest">
+    <part name="email" type="xsd:string"/>
+    <part name="name" type="xsd:string"/>
+    <part name="tasks" type="ns:ArrayOfTasks"/>
+    <part name="companies" type="ns:ArrayOfCompanies"/>
+    <part name="hobby" type="xsd:string"/>
+    <part name="adres" type="xsd:string"/>
+    <part name="name1" type="xsd:string"/>
+    <part name="surname1" type="xsd:string"/>
+    <part name="fathername1" type="xsd:string"/>
+    <part name="cat" type="xsd:string"/>
+    <part name="dog" type="xsd:string"/>
+    <part name="parrot" type="xsd:string"/>
+    <part name="cavy" type="xsd:string"/>
+    <part name="hamster" type="xsd:string"/>
+    <part name="squirrel" type="xsd:string"/>
+    <part name="phone" type="xsd:string"/>
+    <part name="inn" type="xsd:string"/>
+    <part name="gender" type="xsd:string"/>
+    <part name="birthday" type="xsd:string"/>
+    <part name="date_start" type="xsd:string"/>
+  </message>
+
+  <message name="CreateUserWithTasksResponse">
+    <part name="UserReturnTask" element="ns:UserReturnTask"/>
+  </message>
+
+  <message name="CreateTaskRequest">
+    <part name="task_title" type="xsd:string"/>
+    <part name="task_description" type="xsd:string"/>
+    <part name="email_owner" type="xsd:string"/>
+    <part name="email_assign" type="xsd:string"/>
+  </message>
+
+  <message name="CreateTaskResponse">
+    <part name="TaskReturn" element="ns:TaskReturn"/>
+  </message>
+
+  <message name="DeleteUserRequest">
+    <part name="email" type="xsd:string"/>
+  </message>
+
+  <message name="DeleteUserResponse">
+    <part name="result" type="xsd:string"/>
+  </message>
+
+  <message name="UpdateUserOneFieldRequest">
+    <part name="email" type="xsd:string"/>
+    <part name="field" type="xsd:string"/>
+    <part name="value" type="xsd:string"/>
+  </message>
+
+  <message name="UpdateUserOneFieldResponse">
+    <part name="result" type="xsd:string"/>
+  </message>
+
+  <message name="FullUpdateUserRequest">
+    <part name="email" type="xsd:string"/>
+    <part name="hobby" type="xsd:string"/>
+    <part name="name" type="xsd:string"/>
+    <part name="name1" type="xsd:string"/>
+    <part name="surname1" type="xsd:string"/>
+    <part name="fathername1" type="xsd:string"/>
+    <part name="cat" type="xsd:string"/>
+    <part name="dog" type="xsd:string"/>
+    <part name="parrot" type="xsd:string"/>
+    <part name="cavy" type="xsd:string"/>
+    <part name="hamster" type="xsd:string"/>
+    <part name="squirrel" type="xsd:string"/>
+    <part name="phone" type="xsd:string"/>
+    <part name="adres" type="xsd:string"/>
+    <part name="gender" type="xsd:string"/>
+    <part name="birthday" type="xsd:string"/>
+    <part name="date_start" type="xsd:string"/>
+    <part name="inn" type="xsd:string"/>
+  </message>
+
+  <message name="FullUpdateUserResponse">
+    <part name="userReturn" element="ns:UserReturn"/>
+  </message>
+
+  <message name="doLoginRequest">
+    <part name="email" type="xsd:string"/>
+    <part name="password" type="xsd:string"/>
+  </message>
+
+  <message name="doLoginResponse">
+    <part name="result" type="xsd:bool"/>
+  </message>
+
+  <message name="getCompanyRequest">
+    <part name="id_company" type="xsd:int"/>
+  </message>
+
+  <message name="getCompanyResponse">
+    <part name="companyReturn" element="ns:CompanyReturn"/>
+  </message>
+
+  <message name="getUserFullRequest">
+    <part name="email" type="xsd:string"/>
+  </message>
+
+  <message name="getUserFullResponse">
+    <part name="userReturnFull" element="ns:UserReturnFull"/>
+  </message>
+
+  <message name="getUserRequest">
+    <part name="email" type="xsd:string"/>
+  </message>
+
+  <message name="getUserResponse">
+    <part name="userReturn" element="ns:UserReturn"/>
+  </message>
+
+  <message name="doRegisterRequest">
+    <part name="email" type="xsd:string"/>
+    <part name="name" type="xsd:string"/>
+    <part name="password" type="xsd:string"/>
+  </message>
+
+  <message name="doRegisterResponse">
+    <part name="userReturn" element="ns:UserReturn"/>
+  </message>
+
+  <portType name="WrapperSoapServerPortType">
+    <operation name="DeleteTask">
+      <input message="tns:DeleteTaskRequest"/>
+      <output message="tns:DeleteTaskResponse"/>
+    </operation>
+    <operation name="MagicSearch">
+      <input message="tns:MagicSearchRequest"/>
+      <output message="tns:MagicSearchResponse"/>
+    </operation>
+    <operation name="AddTaskInCron">
+      <input message="tns:AddTaskInCronRequest"/>
+      <output message="tns:AddTaskInCronResponse"/>
+    </operation>
+    <operation name="UpdateTask">
+      <input message="tns:UpdateTaskRequest"/>
+      <output message="tns:UpdateTaskResponse"/>
+    </operation>
+    <operation name="CreateCompany">
+      <input message="tns:CreateCompanyRequest"/>
+      <output message="tns:CreateCompanyResponse"/>
+    </operation>
+    <operation name="CreateUser">
+      <input message="tns:CreateUserRequest"/>
+      <output message="tns:CreateUserResponse"/>
+    </operation>
+    <operation name="CreateUserWithTasks">
+      <input message="tns:CreateUserWithTasksRequest"/>
+      <output message="tns:CreateUserWithTasksResponse"/>
+    </operation>
+    <operation name="CreateTask">
+      <input message="tns:CreateTaskRequest"/>
+      <output message="tns:CreateTaskResponse"/>
+    </operation>
+    <operation name="DeleteUser">
+      <input message="tns:DeleteUserRequest"/>
+      <output message="tns:DeleteUserResponse"/>
+    </operation>
+    <operation name="UpdateUserOneField">
+      <input message="tns:UpdateUserOneFieldRequest"/>
+      <output message="tns:UpdateUserOneFieldResponse"/>
+    </operation>
+    <operation name="FullUpdateUser">
+      <input message="tns:FullUpdateUserRequest"/>
+      <output message="tns:FullUpdateUserResponse"/>
+    </operation>
+    <operation name="doLogin">
+      <input message="tns:doLoginRequest"/>
+      <output message="tns:doLoginResponse"/>
+    </operation>
+    <operation name="getCompany">
+      <input message="tns:getCompanyRequest"/>
+      <output message="tns:getCompanyResponse"/>
+    </operation>
+    <operation name="getUserFull">
+      <input message="tns:getUserFullRequest"/>
+      <output message="tns:getUserFullResponse"/>
+    </operation>
+    <operation name="getUser">
+      <input message="tns:getUserRequest"/>
+      <output message="tns:getUserResponse"/>
+    </operation>
+    <operation name="doRegister">
+      <input message="tns:doRegisterRequest"/>
+      <output message="tns:doRegisterResponse"/>
+    </operation>
+  </portType>
+
+
+  <binding name="WrapperSoapServerBinding" type="tns:WrapperSoapServerPortType">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="DeleteTask">
+      <soap:operation soapAction="http://foo.bar/wrappersoapserver/#DeleteTask"/>
+      <input>
+        <soap:body use="literal" namespace="http://foo.bar/wrappersoapserver"/>
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://foo.bar/wrappersoapserver"/>
+      </output>
+    </operation>
+    <operation name="MagicSearch">
+      <soap:operation soapAction="http://foo.bar/wrappersoapserver/#MagicSearch"/>
+      <input>
+        <soap:body use="literal" namespace="http://foo.bar/wrappersoapserver"/>
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://foo.bar/wrappersoapserver"/>
+      </output>
+    </operation>
+    <operation name="AddTaskInCron">
+      <soap:operation soapAction="http://foo.bar/wrappersoapserver/#AddTaskInCron"/>
+      <input>
+        <soap:body use="literal" namespace="http://foo.bar/wrappersoapserver"/>
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://foo.bar/wrappersoapserver"/>
+      </output>
+    </operation>
+    <operation name="UpdateTask">
+      <soap:operation soapAction="http://foo.bar/wrappersoapserver/#UpdateTask"/>
+      <input>
+        <soap:body use="literal" namespace="http://foo.bar/wrappersoapserver"/>
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://foo.bar/wrappersoapserver"/>
+      </output>
+    </operation>
+    <operation name="CreateCompany">
+      <soap:operation soapAction="http://foo.bar/wrappersoapserver/#CreateCompany"/>
+      <input>
+        <soap:body use="literal" namespace="http://foo.bar/wrappersoapserver"/>
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://foo.bar/wrappersoapserver"/>
+      </output>
+    </operation>
+    <operation name="CreateUser">
+      <soap:operation soapAction="http://foo.bar/wrappersoapserver/#CreateUser"/>
+      <input>
+        <soap:body use="literal" namespace="http://foo.bar/wrappersoapserver"/>
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://foo.bar/wrappersoapserver"/>
+      </output>
+    </operation>
+    <operation name="CreateUserWithTasks">
+      <soap:operation soapAction="http://foo.bar/wrappersoapserver/#CreateUserWithTasks"/>
+      <input>
+        <soap:body use="literal" namespace="http://foo.bar/wrappersoapserver"/>
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://foo.bar/wrappersoapserver"/>
+      </output>
+    </operation>
+    <operation name="CreateTask">
+      <soap:operation soapAction="http://foo.bar/wrappersoapserver/#CreateTask"/>
+      <input>
+        <soap:body use="literal" namespace="http://foo.bar/wrappersoapserver"/>
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://foo.bar/wrappersoapserver"/>
+      </output>
+    </operation>
+    <operation name="DeleteUser">
+      <soap:operation soapAction="http://foo.bar/wrappersoapserver/#DeleteUser"/>
+      <input>
+        <soap:body use="literal" namespace="http://foo.bar/wrappersoapserver"/>
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://foo.bar/wrappersoapserver"/>
+      </output>
+    </operation>
+    <operation name="UpdateUserOneField">
+      <soap:operation soapAction="http://foo.bar/wrappersoapserver/#UpdateUserOneField"/>
+      <input>
+        <soap:body use="literal" namespace="http://foo.bar/wrappersoapserver"/>
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://foo.bar/wrappersoapserver"/>
+      </output>
+    </operation>
+    <operation name="FullUpdateUser">
+      <soap:operation soapAction="http://foo.bar/wrappersoapserver/#FullUpdateUser"/>
+      <input>
+        <soap:body use="literal" namespace="http://foo.bar/wrappersoapserver"/>
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://foo.bar/wrappersoapserver"/>
+      </output>
+    </operation>
+    <operation name="doLogin">
+      <soap:operation soapAction="http://foo.bar/wrappersoapserver/#doLogin"/>
+      <input>
+        <soap:body use="literal" namespace="http://foo.bar/wrappersoapserver"/>
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://foo.bar/wrappersoapserver"/>
+      </output>
+    </operation>
+    <operation name="getCompany">
+      <soap:operation soapAction="http://foo.bar/wrappersoapserver/#getCompany"/>
+      <input>
+        <soap:body use="literal" namespace="http://foo.bar/wrappersoapserver"/>
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://foo.bar/wrappersoapserver"/>
+      </output>
+    </operation>
+    <operation name="getUserFull">
+      <soap:operation soapAction="http://foo.bar/wrappersoapserver/#getUserFull"/>
+      <input>
+        <soap:body use="literal" namespace="http://foo.bar/wrappersoapserver"/>
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://foo.bar/wrappersoapserver"/>
+      </output>
+    </operation>
+    <operation name="getUser">
+      <soap:operation soapAction="http://foo.bar/wrappersoapserver/#getUser"/>
+      <input>
+        <soap:body use="literal" namespace="http://foo.bar/wrappersoapserver"/>
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://foo.bar/wrappersoapserver"/>
+      </output>
+    </operation>
+    <operation name="doRegister">
+      <soap:operation soapAction="http://foo.bar/wrappersoapserver/#doRegister"/>
+      <input>
+        <soap:body use="literal" namespace="http://foo.bar/wrappersoapserver"/>
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://foo.bar/wrappersoapserver"/>
+      </output>
+    </operation>
+  </binding>
+
+
+  <service name="WrapperSoapServerService">
+    <port name="WrapperSoapServerPort" binding="tns:WrapperSoapServerBinding">
+      <soap:address location="http://users.bugred.ru/tasks/soap/WrapperSoapServer.php"/>
+    </port>
+  </service>
+</definitions>

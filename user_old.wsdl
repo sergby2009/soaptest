@@ -1,0 +1,125 @@
+<definitions name="userSVR"
+        xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+        xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+        xmlns:tns="http://php2.local/"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+        xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+        xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+    <types>
+        <xs:schema elementFormDefault="qualified"
+            xmlns:tns="http://schemas.xmlsoap.org/wsdl/"
+            xmlns:xs="http://www.w3.org/2001/XMLSchema"
+            xmlns="http://php2.local/"
+            targetNamespace="http://php2.local/">
+
+            <complexType name="User" mixed="true">
+                <sequence>
+                    <element name="firstname" type="string" minOccurs="1" maxOccurs="1" />
+                    <element name="lastname" type="string" minOccurs="1" maxOccurs="1" />
+                    <element name="bday" type="dateTime" minOccurs="1" maxOccurs="1" />
+                    <element name="tel" type="string" minOccurs="0" maxOccurs="1" />
+                    <element name="pasport" type="string" minOccurs="1" maxOccurs="1" />
+                </sequence>
+            </complexType>
+
+            <complexType name="UserList" mixed="true">
+               <sequence>
+                    <element minOccurs="1" maxOccurs="unbounded" name="user" type="User" />
+               </sequence>
+            </complexType>
+
+            <element name="SendRequest">
+                <complexType mixed="true">
+                    <sequence>
+                        <element name="userList" type="UserList" />
+                     </sequence>
+                </complexType>
+            </element>
+
+            <element name="SendResponse">
+                <complexType>
+                    <sequence>
+                        <element name="status" type="boolean"/>
+                    </sequence>
+                </complexType>
+            </element>
+
+            <element name="getRequest">
+                <complexType>
+                    <sequence>
+                        <element name="inf" type="decimal"/>
+                    </sequence>
+                </complexType>
+            </element>
+
+            <element name="getResponse">
+                <complexType>
+                    <sequence>
+                        <element name="getList" type="UserList"/>
+                    </sequence>
+                </complexType>
+            </element>
+        </xs:schema>
+    </types>
+
+    <!-- Сообщения процедуры sendUser -->
+    <message name="sendUserRequest">
+        <part name="SendRequest" element="SendRequest" />
+    </message>
+    <message name="sendUserResponse">
+        <part name="SendResponse" element="SendResponse" />
+    </message>
+    <!-- Сообщения процедуры getUser -->
+    <message name="getUserRequest">
+        <part name="getRequest" element="getRequest" />
+    </message>
+    <message name="getUserResponse">
+        <part name="getResponse" element="getResponse" />
+    </message>
+
+    <!-- Формат процедур к сообщениям -->
+    <portType name="UserServicePortType">
+        <operation name="sendUser">
+            <input message="tns:sendUserRequest" />
+            <output message="tns:sendUserResponse"/>
+        </operation>
+        <operation name="getUser">
+            <input message="getUserRequest" />
+            <output message="getUserResponse"/>
+        </operation>
+    </portType>
+
+    <!-- Формат процедур веб-сервиса -->
+    <binding name="UserServiceBinding" type="UserServicePortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+        <operation name="sendUser">
+            <soap:operation soapAction="http://php2.local/userserver.php" />
+            <input>
+                <soap:body use="literal" namespace="http://php2.local"/>
+            </input>
+            <output>
+                <soap:body use="literal" namespace="http://php2.local"/>
+            </output>
+        </operation>
+        <operation name="getUser">
+            <soap:operation soapAction="http://php2.local/userserver2.php" />
+            <input>
+                <soap:body use="literal" namespace="http://php2.local"/>
+            </input>
+            <output>
+                <soap:body use="literal" namespace="http://php2.local"/>
+            </output>
+        </operation>
+    </binding>
+
+    <!-- Определение сервиса -->
+    <service name="UserService">
+        <port name="UserServicePort" binding="UserServiceBinding">
+            <soap:address location="http://php2.local/userserver.php" />
+        </port>
+    </service>
+</definitions>

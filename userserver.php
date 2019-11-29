@@ -5,12 +5,10 @@
 
     const CONF_NAME = "config.ini";
 
-    function __autoload($class_name){
-        include $class_name . '.class.php';
-    }
+    include 'SoapUserService.class.php';
 
     ini_set("soap.wsdl_cache_enabled","0");
 
-    $server = new SoapServer("http://{$_SERVER['HTTP_HOST']}/user.php");
+    $server = new SoapServer("http://php2.local/user.wsdl");
     $server->setClass('SoapUserService');
     $server->handle();
