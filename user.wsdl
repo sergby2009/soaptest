@@ -21,7 +21,7 @@
             <!--xmlns="http://php2.local/"-->
             <!--targetNamespace="http://php2.local/">-->
 
-            <xsd:complexType name="User">
+            <xsd:complexType name="TUser">
                 <xsd:sequence>
                     <xsd:element name="firstname" type="xsd:string" minOccurs="1" maxOccurs="1" />
                     <xsd:element name="lastname" type="xsd:string" minOccurs="1" maxOccurs="1" />
@@ -31,16 +31,16 @@
                 </xsd:sequence>
             </xsd:complexType>
 
-            <xsd:complexType name="UserList">
+            <xsd:complexType name="TuserList">
                <xsd:sequence>
-                    <xsd:element minOccurs="1" maxOccurs="unbounded" name="user" type="ns:User" />
+                    <xsd:element minOccurs="1" maxOccurs="unbounded" name="user" type="ns:TUser" />
                </xsd:sequence>
             </xsd:complexType>
 
             <xsd:element name="SendRequest">
                 <xsd:complexType>
                     <xsd:sequence>
-                        <xsd:element name="userList" type="ns:UserList" />
+                        <xsd:element name="userList" type="ns:TuserList" />
                      </xsd:sequence>
                 </xsd:complexType>
             </xsd:element>
@@ -53,7 +53,7 @@
                 </xsd:complexType>
             </xsd:element>
 
-            <xsd:element name="getRequest">
+            <xsd:element name="GetRequest">
                 <xsd:complexType>
                     <xsd:sequence>
                         <xsd:element name="inf" type="xsd:integer"/>
@@ -61,10 +61,10 @@
                 </xsd:complexType>
             </xsd:element>
 
-            <xsd:element name="getResponse">
+            <xsd:element name="GetResponse">
                 <xsd:complexType>
                     <xsd:sequence>
-                        <xsd:element name="getList" type="ns:UserList"/>
+                        <xsd:element name="getList" type="ns:TuserList"/>
                     </xsd:sequence>
                 </xsd:complexType>
             </xsd:element>
@@ -78,12 +78,12 @@
     <message name="sendUserResponse">
         <part name="sendResponse" element="ns:SendResponse" />
     </message>
-    <!-- Сообщения процедуры getUser -->
+     <!--Сообщения процедуры getUser-->
     <message name="getUserRequest">
-        <part name="GetRequest" element="ns:GetRequest" />
+        <part name="getRequest" element="ns:GetRequest" />
     </message>
     <message name="getUserResponse">
-        <part name="getResponse" element="ns:getResponse" />
+        <part name="getResponse" element="ns:GetResponse" />
     </message>
 
     <!-- Формат процедур к сообщениям -->
@@ -111,7 +111,7 @@
             </output>
         </operation>
         <operation name="getUser">
-            <soap:operation soapAction="http://php2.local/userserver2.php" />
+            <soap:operation soapAction="http://php2.local/userserver.php" />
             <input>
                 <soap:body use="literal" namespace="http://php2.local"/>
             </input>

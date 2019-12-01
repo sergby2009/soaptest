@@ -1,19 +1,19 @@
 <?php
-//class User{
+//class TUser{
 //    public $firstname;
 //    public $lastname;
 //    public $bday;
 //    public $tel;
 //    public $pasport;
 //}
-//class UserList{
+//class TUserList{
 //    public $userList;
 //}
 //
 //class SendRequest{
-//    public $SendRequest;
+//    public $sendRequest;
 //}
-//
+
 //class GetRequest{
 //    public $inf;
 //}
@@ -32,39 +32,48 @@ class SoapUserService
             "lastname" => "Иванов",
             "bday" => "22-07-1980",
             "tel" => "923-558-68-47",
-            "pasport"=> "8735-987654"),
+            "pasport" => "8735-987654"),
     );
 
-//    public function sendUser(sendRequest $sendRequest){
-//        if (!is_null($sendReuqest)){
-//            foreach ($sendRequest->SendRequest->userList as $newUser) {
-//                foreach ($this->userArray as $user) {
-//                    if ($newUser['firstname'] == $user['firstname'] &&
-//                        $newUser['lastname'] == $user['lastname'] &&
-//                        $newUser['bday'] == $user['bday'] &&
-//                        $newUser['tel'] == $user['tel'] &&
-//                        $newUser['phone'] == $user['phone']){
-//                        return false;
-//                    }//if
-//                }//foreach
-//            }//foreach
-//            foreach ($sendRequest->SendRequest->userList as $newUser) {
-//                $this->userArray[] = $newUser;
-//            }//foreach
-//
-////           Вывод содержимого $this->userArray
-////           foreach ($this->userArray as $user) {
-////               echo "<br>";
-////               foreach ($user as $key => $item ) {
-////                   echo "{$key} = {$item}";
-////                   echo "<br>";
-////               }//foreach
-////           }//foreach
-//            return true;
-//        }else{
-//            return false;
-//        }//if
-//    }//sendUser
+    public function sendUser($sendRequest){
+        if (!is_null($sendRequest)){
+            $rawPost  = "Input:\r\n";
+            $rawPost .= file_get_contents('php://input');
+            $rawPost .= "\r\n---\r\nsendRequest:\r\n";
+            $rawPost .= serialize($sendRequest);
+            file_put_contents("log.txt",$rawPost);
+            foreach ($sendRequest->userList as $newUser) {
+                foreach ($this->userArray as $user) {
+                    if ($newUser->firstname == $user['firstname'] &&
+                        $newUser->lastname == $user['lastname'] &&
+                        $newUser->bday == $user['bday'] &&
+                        $newUser->tel == $user['tel'] &&
+                        $newUser->pasport == $user['pasport']){
+                        return array("status" => "false");
+                    }//if
+                }//foreach
+            }//foreach
+            foreach ($sendRequest->userList as $newUser) {
+                $this->userArray[] = [ 'firstname' => $newUser->firstname,
+                                       'lastname' => $newUser->lastname,
+                                        'bday' => $newUser->bday,
+                                        'tel' => $newUser->tel,
+                                        'pasport' => $newUser->pasport ];
+            }//foreach
+
+//           Вывод содержимого $this->userArray
+//           foreach ($this->userArray as $user) {
+//               echo "<br>";
+//               foreach ($user as $key => $item ) {
+//                   echo "{$key} = {$item}";
+//                   echo "<br>";
+//               }//foreach
+//           }//foreach
+            return array("status" => "true");
+        }else{
+            return array("status" => "false");
+        }//if
+    }//sendUser
 
 }//class
 
