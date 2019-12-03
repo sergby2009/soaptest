@@ -26,12 +26,8 @@ class SendRequest{
 
 $req = new SendRequest();
 $req->sendRequest = new TuserList();
-//$req->sendRequest->userList = new TUser();
-//$req->sendRequest->userList->firstname = "Иван";
-//$req->sendRequest->userList->lastname = "Грозный";
-//$req->sendRequest->userList->bday = "01-01-1502";
-//$req->sendRequest->userList->pasport = "0000-000000";
-//$req->sendRequest->userList->tel = "000-000-00-00";
+
+//$req->sendRequest->userList = new ArrayObject();
 
 $user = new TUser();
 $user->firstname = "Иван";
@@ -40,12 +36,28 @@ $user->bday = "01-01-1502";
 $user->pasport = "0000-000000";
 $user->tel = "000-000-00-00";
 
-$req->sendRequest->userList[] = $user;
+$user1 = new TUser();
+$user1->firstname = "Иван";
+$user1->lastname = "Грозный";
+$user1->bday = "01-01-1502";
+$user1->pasport = "0000-000000";
+$user1->tel = "000-000-00-00";
 
-//$req->SendRequest->userList[]  = $user;
-//$req->SendRequest->userList[]  = $user;
-//$srv = new SoapUserService();
-//$srv->sendUser($req);
+$user2 = new TUser();
+$user2->firstname = "Иван";
+$user2->lastname = "Грозный";
+$user2->bday = "01-01-1502";
+$user2->pasport = "0000-000000";
+$user2->tel = "000-000-00-00";
+
+
+//$user = new SoapVar($user1,SOAP_ENC_OBJECT,null,null,'user');
+//$req->sendRequest->userList->append($user1);
+
+
+$req->sendRequest->userList[] = $user;
+$req->sendRequest->userList[] = $user1;
+$req->sendRequest->userList[] = $user2;
 
 try {
         $options = ['soap_version' => SOAP_1_2,

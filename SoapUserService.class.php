@@ -1,23 +1,4 @@
 <?php
-//class TUser{
-//    public $firstname;
-//    public $lastname;
-//    public $bday;
-//    public $tel;
-//    public $pasport;
-//}
-//class TUserList{
-//    public $userList;
-//}
-//
-//class SendRequest{
-//    public $sendRequest;
-//}
-
-//class GetRequest{
-//    public $inf;
-//}
-
 class SoapUserService
 {
     private $userArray = array(
@@ -26,7 +7,7 @@ class SoapUserService
             "lastname" => "Петров",
             "bday" => "01-12-1994",
             "tel" => "905-568-78-52",
-            "pasport"=> "9054-568782"),
+            "pasport" => "9054-568782"),
         "2" => array(
             "firstname" => "Андрей",
             "lastname" => "Иванов",
@@ -35,14 +16,17 @@ class SoapUserService
             "pasport" => "8735-987654"),
     );
 
-    public function sendUser($sendRequest){
-        if (!is_null($sendRequest)){
-            $rawPost  = "Input:\r\n";
+    public function sendUser($sendRequest)
+    {
+        if (!is_null($sendRequest)) {
+            // Log переданного пакета
+            $rawPost = "Input:\r\n";
             $rawPost .= file_get_contents('php://input');
             $rawPost .= "\r\n---\r\nsendRequest:\r\n";
             $rawPost .= serialize($sendRequest);
-            file_put_contents("log.txt",$rawPost);
-            foreach ($sendRequest->userList as $newUser) {
+            file_put_contents("log.xml", $rawPost);
+            // Поиск дублей (при нахождение выход с false)
+            foreach ($sendRequest->userList->user as $newUser) {
                 foreach ($this->userArray as $user) {
                     if ($newUser->firstname == $user['firstname'] &&
                         $newUser->lastname == $user['lastname'] &&
@@ -50,50 +34,27 @@ class SoapUserService
                         $newUser->tel == $user['tel'] &&
                         $newUser->pasport == $user['pasport']){
                         return array("status" => "false");
+                    }else{
+                        $this->userArray[] = ['firstname' => $newUser->firstname,
+                            'lastname' => $newUser->lastname,
+                            'bday' => $newUser->bday,
+                            'tel' => $newUser->tel,
+                            'pasport' => $newUser->pasport];
                     }//if
                 }//foreach
             }//foreach
-            foreach ($sendRequest->userList as $newUser) {
-                $this->userArray[] = [ 'firstname' => $newUser->firstname,
-                                       'lastname' => $newUser->lastname,
-                                        'bday' => $newUser->bday,
-                                        'tel' => $newUser->tel,
-                                        'pasport' => $newUser->pasport ];
+            // Добавление пользователя в массив
+            foreach ($sendRequest->userList->user as $newUser) {
+                $this->userArray[] = ['firstname' => $newUser->firstname,
+                    'lastname' => $newUser->lastname,
+                    'bday' => $newUser->bday,
+                    'tel' => $newUser->tel,
+                    'pasport' => $newUser->pasport];
             }//foreach
-
-//           Вывод содержимого $this->userArray
-//           foreach ($this->userArray as $user) {
-//               echo "<br>";
-//               foreach ($user as $key => $item ) {
-//                   echo "{$key} = {$item}";
-//                   echo "<br>";
-//               }//foreach
-//           }//foreach
             return array("status" => "true");
-        }else{
+        } else {
             return array("status" => "false");
         }//if
     }//sendUser
 
 }//class
-
-
-
-// Тест класса
-//$req = new SendRequest();
-//
-//$req->sendRequest = new UserList();
-//
-//$user = new User();
-//$user->firstname = "Иван";
-//$user->lastname = "Грозный";
-//$user->bday = "01-01-1502";
-//$user->pasport = "0000-000000";
-//$user->tel = "000-000-00-00";
-//
-//$req->sendRequest->userList[]  = $user;
-//$req->sendRequest->userList[]  = $user;
-//$req->sendRequest->userList[]  = $user;
-//
-//$srv = new SoapUserService();
-//$srv->sendUser($req);

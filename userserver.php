@@ -1,4 +1,5 @@
 <?php
+    // На стороне сервера вывод echo не работает
     header("Content-Type: text/xml; charset=utf-8");
     header("Cache-Control: no-store, no-cache");
     header("Expires:".date('r'));
