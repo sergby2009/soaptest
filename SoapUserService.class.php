@@ -24,7 +24,7 @@ class SoapUserService
             $rawPost .= file_get_contents('php://input');
             $rawPost .= "\r\n---\r\nsendRequest:\r\n";
             $rawPost .= serialize($sendRequest);
-            file_put_contents("log.xml", $rawPost);
+            file_put_contents("log_sendUser.xml", $rawPost);
             // Поиск дублей (при нахождение выход с false)
             foreach ($sendRequest->userList->user as $newUser) {
                 foreach ($this->userArray as $user) {
@@ -57,4 +57,19 @@ class SoapUserService
         }//if
     }//sendUser
 
+    public function getUser($getRequest)
+    {
+        //$id = $id * 1;
+        if (isset($this->userArray[$getRequest])){
+            return array("getList" => array("user" => array(
+                "firstname" => $this->userArray[$getRequest]["firstname"],
+                "lastname"  => $this->userArray[$getRequest]["lastname"],
+                "bday"  => $this->userArray[$getRequest]["bday"],
+                "tel"  => $this->userArray[$getRequest]["tel"],
+                "pasport"  => $this->userArray[$getRequest]["pasport"]
+            )));
+        }else{
+            throw new SoapFault("server", "Несуществующий id");
+        }
+    }//getUser
 }//class

@@ -1,7 +1,37 @@
 Input:
-<?xml version="1.0" encoding="UTF-8"?>
-<env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:ns1="http://php2.local"><env:Body><ns1:sendUser><sendRequest><userList><user><firstname>Иван</firstname><lastname>Грозный</lastname><bday>01-01-1502</bday><tel>000-000-00-00</tel><pasport>0000-000000</pasport></user><user><firstname>Иван</firstname><lastname>Грозный</lastname><bday>01-01-1502</bday><tel>000-000-00-00</tel><pasport>0000-000000</pasport></user><user><firstname>Иван</firstname><lastname>Грозный</lastname><bday>01-01-1502</bday><tel>000-000-00-00</tel><pasport>0000-000000</pasport></user></userList></sendRequest></ns1:sendUser></env:Body></env:Envelope>
+        <?xml version="1.0" encoding="UTF-8"?>
+<env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:ns1="http://php2.local">
+    <env:Body>
+        <ns1:sendUser>
+            <sendRequest>
+                <userList>
+                    <user>
+                        <firstname>Иван</firstname>
+                        <lastname>Грозный</lastname>
+                        <bday>01-01-1502</bday>
+                        <tel>000-000-00-00</tel>
+                        <pasport>0000-000000</pasport>
+                    </user>
+                    <user>
+                        <firstname>Иван</firstname>
+                        <lastname>Грозный</lastname>
+                        <bday>01-01-1502</bday>
+                        <tel>000-000-00-00</tel>
+                        <pasport>0000-000000</pasport>
+                    </user>
+                    <user>
+                        <firstname>Иван</firstname>
+                        <lastname>Грозный</lastname>
+                        <bday>01-01-1502</bday>
+                        <tel>000-000-00-00</tel>
+                        <pasport>0000-000000</pasport>
+                    </user>
+                </userList>
+            </sendRequest>
+        </ns1:sendUser>
+    </env:Body>
+</env:Envelope>
 
----
-sendRequest:
-O:8:"stdClass":1:{s:8:"userList";O:8:"stdClass":1:{s:4:"user";a:3:{i:0;O:8:"stdClass":5:{s:9:"firstname";s:8:"Иван";s:8:"lastname";s:14:"Грозный";s:4:"bday";s:10:"01-01-1502";s:3:"tel";s:13:"000-000-00-00";s:7:"pasport";s:11:"0000-000000";}i:1;O:8:"stdClass":5:{s:9:"firstname";s:8:"Иван";s:8:"lastname";s:14:"Грозный";s:4:"bday";s:10:"01-01-1502";s:3:"tel";s:13:"000-000-00-00";s:7:"pasport";s:11:"0000-000000";}i:2;O:8:"stdClass":5:{s:9:"firstname";s:8:"Иван";s:8:"lastname";s:14:"Грозный";s:4:"bday";s:10:"01-01-1502";s:3:"tel";s:13:"000-000-00-00";s:7:"pasport";s:11:"0000-000000";}}}}
+        ---
+        sendRequest:
+        O:8:"stdClass":1:{s:8:"userList";O:8:"stdClass":1:{s:4:"user";a:3:{i:0;O:8:"stdClass":5:{s:9:"firstname";s:8:"Иван";s:8:"lastname";s:14:"Грозный";s:4:"bday";s:10:"01-01-1502";s:3:"tel";s:13:"000-000-00-00";s:7:"pasport";s:11:"0000-000000";}i:1;O:8:"stdClass":5:{s:9:"firstname";s:8:"Иван";s:8:"lastname";s:14:"Грозный";s:4:"bday";s:10:"01-01-1502";s:3:"tel";s:13:"000-000-00-00";s:7:"pasport";s:11:"0000-000000";}i:2;O:8:"stdClass":5:{s:9:"firstname";s:8:"Иван";s:8:"lastname";s:14:"Грозный";s:4:"bday";s:10:"01-01-1502";s:3:"tel";s:13:"000-000-00-00";s:7:"pasport";s:11:"0000-000000";}}}}
