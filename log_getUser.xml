@@ -1,0 +1,7 @@
+Input:
+<?xml version="1.0" encoding="UTF-8"?>
+<env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:ns1="http://php2.local"><env:Body><ns1:getUser><getRequest><inf>1</inf></getRequest></ns1:getUser></env:Body></env:Envelope>
+
+---
+getRequest:
+O:8:"stdClass":1:{s:3:"inf";i:1;}

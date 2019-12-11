@@ -21,9 +21,12 @@ class TuserList{
 //
 class SendRequest{
     public $sendRequest;
-    public $id;
+    public $inf;
 }
 
+class GetRequest{
+    public $inf;
+}
 
 $req = new SendRequest();
 $req->sendRequest = new TuserList();
@@ -60,7 +63,12 @@ $req->sendRequest->userList[] = $user;
 $req->sendRequest->userList[] = $user1;
 $req->sendRequest->userList[] = $user2;
 
-$req->id = 5;
+unset($req);
+
+$getRequest = new GetRequest();
+$getRequest->inf = 1;
+
+
 
 try {
         $options = ['soap_version' => SOAP_1_2,
@@ -71,7 +79,7 @@ try {
         $client->__setCookie('XDEBUG_SESSION', 'PHPSTORM');
         var_dump($client->__getFunctions());
         var_dump($client->sendUser($req->sendRequest));
-        var_dump($client->getUser($req->id));
+        var_dump($client->getUser($getRequest));
         echo $result;
     } catch (SoapFault $exception) {
         echo $exception->getMessage();

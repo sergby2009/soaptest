@@ -59,17 +59,24 @@ class SoapUserService
 
     public function getUser($getRequest)
     {
-        //$id = $id * 1;
-        if (isset($this->userArray[$getRequest])){
-            return array("getList" => array("user" => array(
-                "firstname" => $this->userArray[$getRequest]["firstname"],
-                "lastname"  => $this->userArray[$getRequest]["lastname"],
-                "bday"  => $this->userArray[$getRequest]["bday"],
-                "tel"  => $this->userArray[$getRequest]["tel"],
-                "pasport"  => $this->userArray[$getRequest]["pasport"]
-            )));
-        }else{
-            throw new SoapFault("server", "Несуществующий id");
-        }
+        // Log переданного пакета
+        $rawPost = "Input:\r\n";
+        $rawPost .= file_get_contents('php://input');
+        $rawPost .= "\r\n---\r\ngetRequest:\r\n";
+        $rawPost .= serialize($getRequest);
+        file_put_contents("log_getUser.xml", $rawPost);
+        //foreach ($getRequest->inf as $inf) {
+            if (isset($this->userArray[$getRequest->inf])){
+                return array("getList" => array("user" => array(
+                    "firstname" => $this->userArray[$getRequest->inf]["firstname"],
+                    "lastname"  => $this->userArray[$getRequest->inf]["lastname"],
+                    "bday"  => $this->userArray[$getRequest->inf]["bday"],
+                    "tel"  => $this->userArray[$getRequest->inf]["tel"],
+                    "pasport"  => $this->userArray[$getRequest->inf]["pasport"]
+                )));
+            }else{
+                throw new SoapFault("server", "Несуществующий id");
+            }//if
+        //}//foreach
     }//getUser
 }//class
