@@ -14,6 +14,7 @@ class TUser{
     public $tel;
     public $pasport;
 }
+
 //
 class TuserList{
     public $userList;
@@ -67,8 +68,6 @@ unset($req);
 
 $getRequest = new GetRequest();
 $getRequest->inf = 1;
-
-
 
 try {
         $options = ['soap_version' => SOAP_1_2,
